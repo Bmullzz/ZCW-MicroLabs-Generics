@@ -18,14 +18,14 @@ public class GenericStack<E>  {
 
     @SuppressWarnings("unchecked")
     public void push(E item){
-        E[] elements2 = (E[]) new Object[elements.length + 1];
+        E[] secondElementArray = (E[]) new Object[elements.length + 1];
 
         for(int i = 0; i < elements.length; i++){
-            elements[i] = elements2[i];
+            secondElementArray[i] = elements[i];
         }
-        elements2[elements.length-1] = item;
+        secondElementArray[secondElementArray.length-1] = item;
 
-        elements = elements2;
+        elements = secondElementArray;
     }
 
     public E pop() throws IndexOutOfBoundsException {
