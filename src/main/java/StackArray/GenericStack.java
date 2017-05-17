@@ -19,20 +19,32 @@ public class GenericStack<E>  {
     @SuppressWarnings("unchecked")
     public void push(E item){
         E[] elements2 = (E[]) new Object[elements.length + 1];
+
         for(int i = 0; i < elements.length; i++){
             elements[i] = elements2[i];
         }
         elements2[elements.length-1] = item;
+
+        elements = elements2;
     }
 
-    public E pop(){
+    public E pop() throws IndexOutOfBoundsException {
+        E items = elements[elements.length - 1];
+        E[] updatedArray = Arrays.copyOf(elements, elements.length-1);
+
         if(elements.length < 1){
-            
+            throw new IndexOutOfBoundsException();
         }
-        return ;
+
+        elements = updatedArray;
+
+        return items;
     }
 
     public boolean isEmpty(){
+
+        return elements.length == 0;
+
 
     }
 }
